@@ -1,0 +1,59 @@
+<!-- Employee Search -->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4">
+      <form>
+        <div class="form-group">
+          <input type="text" name="employee" [(ngModel)]="employeeSearch" (keyup)="filterEmployees(employeeSearch)"
+            class="form-control" placeholder="Country Name">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col">
+      <h3>Total No.Of Country : {{employeeCount}}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header bg-dark text-white">
+          <h3>Crona List</h3>
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 *ngIf="errorMessage" class="text-danger">{{errorMessage}}</h3>
+          </div>
+          <table class="table table-hover text-center table-warning table-striped">
+            <thead class="bg-warning text-white text-uppercase">
+              <tr>
+                <th>SNO</th>
+                <th>Country</th>
+                <th>NewConfirmed</th>
+                <th>TotalConfirmed</th>
+                <th>NewDeaths</th>
+                <th>TotalDeaths</th>
+                <th>TotalRecovered</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let employee of employees;let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{employee.Country}}</td>
+                <td>{{employee.NewConfirmed}}</td>
+                <td>{{employee.TotalConfirmed}}</td>
+                <td>{{employee.NewDeaths}}</td>
+                <td>{{employee.TotalDeaths}}</td>
+                <td>{{employee.TotalRecovered}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
